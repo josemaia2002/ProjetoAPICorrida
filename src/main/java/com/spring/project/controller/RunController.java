@@ -24,7 +24,7 @@ public class RunController {
     @Autowired
     private RunRepository runRepository;
 
-    @GetMapping()
+    @GetMapping(value = "/")
     public List<Run> findaAll() {
         return runRepository.findAll();
     }
@@ -39,12 +39,12 @@ public class RunController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping()
+    @PostMapping(value = "/")
     public void save(@RequestBody Run run) {
         runRepository.save(run);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id){
         Optional<Run> run = runRepository.findById(id);
         if(run.isEmpty()) {
